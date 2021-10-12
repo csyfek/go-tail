@@ -202,6 +202,8 @@ func (t *Follower) follow() error {
 				if !t.config.Reopen {
 					return nil
 				}
+				//XXX - reopen fails to reopen #5
+				time.Sleep(30 * time.Second)
 
 				if err := t.rewatch(); err != nil {
 					return err
